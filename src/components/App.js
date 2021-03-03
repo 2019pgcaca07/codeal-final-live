@@ -1,13 +1,10 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { BrowserRouter as Router, Link, Route,Switch } from 'react-router-dom';
+import { BrowserRouter as Router, Link, Route, Switch } from 'react-router-dom';
 import PropTypes from 'prop-types';
 
 import { fetchPosts } from '../actions/posts';
-import { Home, Navbar, Page404 } from './';
-
-const Login = () => <div>Login</div>;
-const Signup = () => <div>Signup</div>;
+import { Home, Navbar, Page404, Login, Signup } from './';
 
 class App extends React.Component {
   componentDidMount() {
@@ -22,16 +19,16 @@ class App extends React.Component {
         <div>
           <Navbar />
           <Switch>
-          <Route
-            exact
-            path="/"
-            render={(props) => {
-              return <Home {...props} posts={posts} />;
-            }}
-          />
-          <Route path="/login" component={Login} />
-          <Route path="/signup" component={Signup} />
-          <Route  component={Page404} />
+            <Route
+              exact
+              path="/"
+              render={(props) => {
+                return <Home {...props} posts={posts} />;
+              }}
+            />
+            <Route path="/login" component={Login} />
+            <Route path="/signup" component={Signup} />
+            <Route component={Page404} />
           </Switch>
         </div>
       </Router>
