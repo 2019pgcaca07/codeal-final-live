@@ -408,6 +408,9 @@ nav .nav-links ul li:hover {
 .field button:hover {
   cursor: pointer;
 }
+.field button:disabled {
+  cursor: not-allowed;
+}
 
 /* SETTINGS and USERPROFILE */
 .settings {
@@ -521,4 +524,3 @@ nav .nav-links ul li:hover {
 #add-post-btn:hover {
   cursor: pointer;
 }
-
