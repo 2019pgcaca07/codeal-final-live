@@ -51,6 +51,15 @@ class Signup extends Component {
             onChange={(e) => this.handleInputChange('email', e.target.value)}
           />
         </div>
+        
+        <div className="field">
+          <input
+            placeholder="Password"
+            type="password"
+            required
+            onChange={(e) => this.handleInputChange('password', e.target.value)}
+          />
+        </div>
         <div className="field">
           <input
             placeholder="Confirm password"
@@ -59,14 +68,6 @@ class Signup extends Component {
             onChange={(e) =>
               this.handleInputChange('confirmPassword', e.target.value)
             }
-          />
-        </div>
-        <div className="field">
-          <input
-            placeholder="Password"
-            type="password"
-            required
-            onChange={(e) => this.handleInputChange('password', e.target.value)}
           />
         </div>
         <div className="field">
