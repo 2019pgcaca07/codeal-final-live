@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
-import {Redirect} from 'react-router-dom';
+import { Redirect } from 'react-router-dom';
 import { connect } from 'react-redux';
 
-import { clearAuthState, login } from '../actions/auth';
+import { login, clearAuthState } from '../actions/auth';
 
 class Login extends Component {
   constructor(props) {
@@ -14,11 +14,10 @@ class Login extends Component {
       password: '',
     };
   }
-   
+
   componentWillUnmount() {
     this.props.dispatch(clearAuthState());
   }
-  
 
   handleEmailChange = (e) => {
     this.setState({
@@ -46,8 +45,10 @@ class Login extends Component {
 
   render() {
     const { error, inProgress, isLoggedin } = this.props.auth;
-    if(isLoggedin){
-      return <Redirect to="/" />
+    const { from } = this.props.location.state || { from: { pathname: '/' } };
+
+    if (isLoggedin) {
+      return <Redirect to={from} />;
     }
     return (
       <form className="login-form">
@@ -76,10 +77,10 @@ class Login extends Component {
         <div className="field">
           {inProgress ? (
             <button onClick={this.handleFormSubmit} disabled={inProgress}>
-              Loggin in...
+              Logging in...
             </button>
           ) : (
-            <button onClick={this.handleFormSubmit} >
+            <button onClick={this.handleFormSubmit} disabled={inProgress}>
               Log In
             </button>
           )}
