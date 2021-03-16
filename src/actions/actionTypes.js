@@ -1,3 +1,4 @@
+  
 export const UPDATE_POSTS = 'UPDATE_POSTS';
 
 // login action types

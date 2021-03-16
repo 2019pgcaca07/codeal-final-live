@@ -17,7 +17,6 @@ class Signup extends Component {
   componentWillUnmount() {
     this.props.dispatch(clearAuthState());
   }
-  
 
   handleInputChange = (field, value) => {
     this.setState({
@@ -37,9 +36,9 @@ class Signup extends Component {
 
   render() {
     const { inProgress, error, isLoggedin } = this.props.auth;
-       
-    if(isLoggedin){
-      return <Redirect to = "/" />
+
+    if (isLoggedin) {
+      return <Redirect to="/" />;
     }
 
     return (
@@ -62,7 +61,7 @@ class Signup extends Component {
             onChange={(e) => this.handleInputChange('email', e.target.value)}
           />
         </div>
-        
+
         <div className="field">
           <input
             placeholder="Password"
