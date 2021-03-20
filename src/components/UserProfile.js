@@ -5,13 +5,26 @@ import { fetchUserProfile } from '../actions/profile';
 class UserProfile extends Component {
   componentDidMount() {
     const { match } = this.props;
-    
 
     if (match.params.userId) {
       // dispatch an action
       this.props.dispatch(fetchUserProfile(match.params.userId));
     }
   }
+
+  checkIfUserIsAFriend = () => {
+    console.log('this.props', this.props);
+    const { match, friends } = this.props;
+    const userId = match.params.userId;
+
+    const index = friends.map((friend) => friend.to_user._id).indexOf(userId); //friends.map gives array of friends so we find indeOf a particular user if there is otherwise it will return -1
+
+    if (index !== -1) {
+      return true;
+    }
+
+    return false;
+  };
 
   render() {
     const {
@@ -20,12 +33,13 @@ class UserProfile extends Component {
     } = this.props;
     console.log('this.props', params);
     const user = profile.user;
-    console.log("user",user);
+    console.log('user', user);
 
-    // if (profile.inProgress) {
-    
-    //   return <h1>Loading!</h1>;
-    // }
+    if (profile.inProgress) {
+      return <h1>Loading!</h1>;
+    }
+
+    const isUserAFriend = this.checkIfUserIsAFriend();
 
     return (
       <div className="settings">
@@ -47,16 +61,21 @@ class UserProfile extends Component {
         </div>
 
         <div className="btn-grp">
-          <button className="button save-btn">Add Friend</button>
+          {!isUserAFriend ? (
+            <button className="button save-btn">Add Friend</button>
+          ) : (
+            <button className="button save-btn">Remove Friend</button>
+          )}
         </div>
       </div>
     );
   }
 }
 
-function mapStateToProps({ profile }) {
+function mapStateToProps({ profile, friends }) {
   return {
     profile,
+    friends,
   };
 }
 export default connect(mapStateToProps)(UserProfile);
