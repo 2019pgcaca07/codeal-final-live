@@ -1,4 +1,3 @@
-  
 export const UPDATE_POSTS = 'UPDATE_POSTS';
 
 // login action types
@@ -25,4 +24,4 @@ export const FETCH_USER_PROFILE = 'FETCH_USER_PROFILE';
 
 // friends
 export const FETCH_FRIENDS_SUCCESS = 'FETCH_FRIENDS_SUCCESS';
-
+export const ADD_FRIEND = 'ADD_FRIEND';
